@@ -7,6 +7,58 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.wheel_front {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 49%;
+    left: 25.5%;
+    z-index: 5;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    animation: wheel_rotate .25s steps(6) infinite;
+}
+
+.r21_front {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: 48%;
+    left: 25%;
+}
+
+
+
+.wheel_back {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 49%;
+    right: 27.22%;
+    z-index: 5;
+
+    img {
+
+        width: 100%;
+        height: 100%;
+
+    }
+
+    animation: wheel_rotate .25s steps(6) infinite;
+}
+
+.r21_back {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: 48%;
+    right: 26.8%;
+}
+
 .container {
     max-width: 1240px;
     margin: 0 auto;
@@ -21,6 +73,7 @@ img {
 .content {
     height: 500px;
     position: relative;
+
     img {
         animation-name: none;
         animation-duration: 2s;
@@ -29,18 +82,38 @@ img {
         z-index: 2;
         position: absolute;
     }
+
     margin-bottom: 50px;
 }
 
 .door {
-    width: 128px;
-    height: 80px;
+    width: 177px;
+    height: 108px;
     background: #000;
     position: absolute;
-    top: 281px;
-    left: 850px;
+    top: 41%;
+    left: 38%;
     opacity: 0;
     z-index: 3;
+}
+
+.door_in {
+    width: 177px;
+    height: 108px;
+    background: #000;
+    position: absolute;
+    top: 28%;
+    left: 32%;
+    opacity: 0;
+    z-index: 3;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 .active {}
@@ -121,7 +194,7 @@ img {
 
 .model {
     display: none;
-    
+
     .model_window {
         width: 600px;
         height: 100%;
@@ -134,9 +207,9 @@ img {
         opacity: 0;
         animation-duration: 0.7s;
         animation-name: animationright;
-        z-index: 4;
-        
-        
+        z-index: 9;
+
+
         .head {
             display: flex;
             align-items: center;
@@ -184,7 +257,7 @@ img {
     justify-content: flex-end;
     flex-direction: column;
     gap: 5px;
-    
+
 
     .burger {
         cursor: pointer;
@@ -193,6 +266,7 @@ img {
         justify-content: flex-end;
         flex-direction: column;
         gap: 5px;
+
         .line {
             height: 5px;
             width: 30px;
@@ -211,8 +285,15 @@ Base HTML
 */
 
 @keyframes animationright {
-    from {right:-600px; opacity:0} 
-    to {right:0; opacity:1}
+    from {
+        right: -600px;
+        opacity: 0
+    }
+
+    to {
+        right: 0;
+        opacity: 1
+    }
 }
 
 // @keyframes animationleft {
@@ -302,31 +383,17 @@ Base HTML
     }
 }
 
-@keyframes door {
-    0% {
-        scale: 0;
-    }
-    20% {
-        scale: 2;
-    }
-    40% {
-        scale: 4;
-    }
-    60% {
-        scale: 6;
-    }
-    80% {
-        scale: 8;
-    }
-    100% {
-        scale: 10;
-    }
+.tesla {
+    animation-name: none;
+    animation-duration: 2s;
+    transition: 2s ease;
 }
 
 @keyframes door {
     0% {
         scale: 0;
     }
+
     100% {
         scale: 10;
     }
@@ -336,7 +403,155 @@ Base HTML
     0% {
         scale: 10;
     }
+
     100% {
         scale: 1;
     }
+}
+
+@keyframes wheel_rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+//////////////////
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.change_img {
+    min-height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 700ms ease;
+    animation-name: none;
+    animation-duration: 2s;
+}
+
+span {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #707070;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 79px;
+}
+
+img {
+    width: 100%;
+}
+
+main {
+    display: none;
+}
+
+.promo_sec {
+
+    .present {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 127px;
+        margin-top: 50px;
+    }
+
+    .color_box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 70px;
+        margin-top: 55px;
+
+        .div:nth-child(2) {
+            padding-bottom: 31px;
+        }
+
+        .color_item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 8px;
+            margin-bottom: 50px;
+
+            .color_elem {
+                background: #262626;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .color_elem:nth-child(2) {
+                background: #EFEFEF;
+            }
+
+            .color_elem:nth-child(3) {
+                background: #E6DDD0;
+            }
+        }
+    }
+}
+
+
+input {
+    appearance: none;
+}
+
+input:checked+.switch .switch-button {
+    left: 1.6rem;
+    background-color: white;
+}
+
+input:checked+.switch {
+    background-color: black;
+    border: 3px solid black;
+}
+
+input:checked+.switch-dark .switch-button-dark {
+    left: 1.6rem;
+    background-color: black;
+}
+
+input:checked+.switch-dark {
+    background-color: white;
+    border: 3px solid white;
+}
+
+.switch {
+    height: 1.3rem;
+    width: 2.8rem;
+    border-radius: 20px;
+    border: 3px solid grey;
+    position: absolute;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.switch-button {
+    background-color: black;
+    position: inherit;
+    top: 0.11rem;
+    left: 0.19rem;
+    border-radius: 10px;
+    height: 80%;
+    width: 35%;
+    transition: all 200ms ease-in-out;
+}
+
+main {
+    animation-name: none;
+    animation-duration: 2s;
+    transition: 2s ease;
 }

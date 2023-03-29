@@ -32,10 +32,21 @@ let close = document.querySelector('.close')
 
 let model_window = document.querySelector('.model_window')
 
-let door = document.querySelector('.door')
+let door = document.querySelectorAll('.door')
 
 let image = document.querySelector('.content img')
 
+let wheel_back = document.querySelector('.wheel_back')
+
+let wheel_front = document.querySelector('.wheel_front')
+
+let main = document.querySelector('main')
+
+let tesla = document.querySelector('.tesla')
+
+let door_in = document.querySelector('.door_in')
+
+let change = document.querySelector('.change_img')
 
 let km = 750
 
@@ -71,27 +82,48 @@ function showSlides(n) {
     slides[slideIndex].classList.add('active')
 }
 
-door.onclick = () => {
-    image.style.animationName = 'door'
-    image.classList.toggle('active')
-    setTimeout(() => {
-        if (image.classList.contains('active')) {
-            image.setAttribute('src', 'img/black.svg')
-        } else {
-            image.setAttribute('src', 'img/tesla.svg')
-        }
-        // image.setAttribute('src', 'img/black.svg')
-        image.style.animationName = 'close_door'
-        showSlides()
-        
-    }, 1900)
+door.forEach((door) => {
 
-    // setTimeout(() => {
-    //     image.classList.add('active')
-    // },2000)
+    door.onclick = () => {
+        image.style.animationName = 'door'
+        image.classList.toggle('active')
+        wheel_back.classList.toggle('hide')
+        wheel_front.classList.toggle('hide')
+        setTimeout(() => {
+            
+            main.style.animationName = 'close_door'
+        }, 1900)
+
+        setTimeout(() => {
+            main.classList.toggle('show')
+        }, 1900)
+
+        setTimeout(() => {
+            tesla.classList.toggle('hide')
+        }, 1900)
+    }
+})
 
 
+
+door_in.onclick = () => {
+    change.style.animationName = 'door'
+        // image.classList.toggle('active')
+        wheel_back.classList.toggle('hide')
+        wheel_front.classList.toggle('hide')
+        setTimeout(() => {
+            image.style.animationName = 'close_door'
+        }, 1900)
+
+        setTimeout(() => {
+            main.classList.toggle('show')
+        }, 1900)
+
+        setTimeout(() => {
+            tesla.classList.toggle('hide')
+        }, 1900)
 }
+
 
 up_spead.onclick = () => {
     speadx += 5
@@ -114,7 +146,7 @@ down_spead.onclick = () => {
 }
 
 up_deg.onclick = () => {
-    deg += 1
+    deg += 5
     temp.innerHTML = deg + '°'
     if (deg > 19) {
         cool.innerHTML = 'Кондиционер'
@@ -122,7 +154,7 @@ up_deg.onclick = () => {
 }
 
 down_deg.onclick = () => {
-    deg -= 1
+    deg -= 5
     temp.innerHTML = deg + '°'
     if (deg < 11) {
         cool.innerHTML = 'печка'
@@ -132,11 +164,16 @@ down_deg.onclick = () => {
 up_whele.onclick = () => {
     disks.innerHTML = razmerMax
     price.innerHTML = '$' + addCommas(cost + 1000)
+    wheel_back.classList.add('r21_back')
+    wheel_front.classList.add('r21_front')
+
 }
 
 down_whele.onclick = () => {
     disks.innerHTML = razmerMin
     price.innerHTML = '$' + addCommas(cost)
+    wheel_back.classList.remove('r21_back')
+    wheel_front.classList.remove('r21_front')
 }
 
 long.onclick = () => {
@@ -188,3 +225,63 @@ function addCommas(nStr) {
     }
     return x1 + x2;
 }
+
+/////////////////////////////
+
+let btns = document.querySelectorAll('.color_item .color_elem')
+
+let price_chage = document.querySelector('.price_chage')
+
+let road_chage = document.querySelector('.road')
+
+let mill_one = 750
+
+let cost_one = 89990
+
+let colors = {
+    black: 'url(img/black.svg)',
+    white: 'url(img/white.svg)',
+    beige: 'url(img/beige.svg)'
+}
+
+btns.forEach(btn => {
+
+    btn.onclick = () => {
+
+        let color = btn.getAttribute('data-color')
+
+        let price = btn.getAttribute('data-price')
+
+        let road = btn.getAttribute('data-road')
+
+        change.style.backgroundImage = colors[color]
+    }
+})
+
+
+
+function addCommas(nStr) {
+    // console.log(nStr);
+
+    nStr += '';
+    // console.log(nStr);
+
+    var x = nStr.split('.');
+    // console.log(x);
+
+    var x1 = x[0];
+    // console.log(x1);
+
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    // console.log(x2);
+
+    var rgx = /(\d+)(\d{3})/;
+    // console.log(rgx);
+
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
+
